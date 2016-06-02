@@ -1,16 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Cabin:400,500);
+
 html, body {
     height: 100%;
     margin: 0 auto;
+    font-family: Cabin, "Helvetica Neue", Helvetica, sans-serif;
+
 }
 
 body {
-    background: url("../images/Wikipedia-logo-v2.svg.png") no-repeat center #333333;
+    background: url("../images/Wikipedia-logo-v2.svg.png") no-repeat center #DADFE1;
 }
 
-div#main {
-    background: rgba(192, 57, 43, 0.95);
+h1 {
     color: #FFF;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 48px;
+}
+
+.start {
+    /*background: rgba(192, 57, 43, 0.95);*/
+    color: #222;
+    /*margin-top: 50px;*/
+    /*margin-bottom: 50px;*/
+    /*height: 500px;*/
+    display: flex;
+    position: relative;
+    align-content: center;
+    min-height: 100%;
+    justify-content: center;
+}
+
+.after-search {
+    background: rgba(192, 57, 43, 0.95);
+    color: #222;
     margin-top: 50px;
-    margin-bottom: 50px;
-    height: 500px;
+    /*margin-bottom: 50px;*/
+}
+
+.search-result {
+    /*display: flex;*/
+    /*position: relative;*/
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.75);
+    margin: 10px 0 10px 0;
+    padding: 10px;
+
+}
+
+#results a:link, a:visited {
+    color: #222;
+    text-decoration: none;
 }

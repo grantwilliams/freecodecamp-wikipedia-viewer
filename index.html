@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <title>freeCodeCamp - Wikipedia Viewer</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet prefetch">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my-styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/my-scripts.js"></script>
 </head>
 <body>
-    <div id="main" class="container text-center">
-        <h1>Wikipedia Viewer ZIPline</h1>
+    <div id="main" class="start container">
+        <div class="title-search text-center">
+            <h1>Wikipedia Viewer ZIPline</h1>
+            <form class="form-inline" id="search-form" name="search-form" method="post" action="#" onsubmit="return fetchSearchResults()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search" value="" required>
+                        <!--<span class="input-group-addon">-->
+                            <a class="input-group-addon btn btn-default" onclick="return fetchSearchResults()"><i class="fa fa-search"></i></a>
+                        <!--</span>-->
+                    </div>
+                </div>
+                <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span class="btn btn-info">Click for random article</span></a>
+            </form>
+        </div>
+        <div id="results">
+
+        </div>
     </div>
 
 </body>
