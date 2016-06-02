@@ -1,0 +1,16 @@
+html, body {
+    height: 100%;
+    margin: 0 auto;
+}
+
+body {
+    background: url("../images/Wikipedia-logo-v2.svg.png") no-repeat center #333333;
+}
+
+div#main {
+    background: rgba(192, 57, 43, 0.95);
+    color: #FFF;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 500px;
+}
