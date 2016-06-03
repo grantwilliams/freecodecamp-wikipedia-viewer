@@ -5,6 +5,7 @@
     <title>freeCodeCamp - Wikipedia Viewer</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet prefetch">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/my-styles.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
@@ -24,7 +25,16 @@
                         <!--</span>-->
                     </div>
                 </div>
+                <!--<span id="number-results-text" class="label label-info">Number of results to display:</span>-->
+                <select class="form-control" id="number-results" onchange="return fetchSearchResults()">
+                    <option value="5">Show 5 results</option>
+                    <option selected value="10">Show 10 results</option>
+                    <option value="20">Show 20 results</option>
+                </select>
                 <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span class="btn btn-info">Click for random article</span></a>
+                <div id="search-error">
+
+                </div>
             </form>
         </div>
         <div id="results">

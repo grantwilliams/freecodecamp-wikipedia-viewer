@@ -52,6 +52,7 @@ Temporary Items
 
 # Unneeded Files/Folders
 .idea
+.idea/workspace.xml
 design
 
 # Build/Dist folders

@@ -18,11 +18,7 @@ h1 {
 }
 
 .start {
-    /*background: rgba(192, 57, 43, 0.95);*/
     color: #222;
-    /*margin-top: 50px;*/
-    /*margin-bottom: 50px;*/
-    /*height: 500px;*/
     display: flex;
     position: relative;
     align-content: center;
@@ -31,17 +27,23 @@ h1 {
 }
 
 .after-search {
-    background: rgba(192, 57, 43, 0.95);
     color: #222;
-    margin-top: 50px;
-    /*margin-bottom: 50px;*/
+    /*margin-top: 50px;*/
 }
 
+#search-error {
+    background-color: red;
+}
+
+/*#results {*/
+    /*overflow-y: auto;*/
+    /*max-height: 700px;*/
+    /*margin-bottom: 50px;*/
+/*}*/
+
 .search-result {
-    /*display: flex;*/
-    /*position: relative;*/
     border: 1px solid black;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.85);
     margin: 10px 0 10px 0;
     padding: 10px;
 
@@ -50,4 +52,8 @@ h1 {
 #results a:link, a:visited {
     color: #222;
     text-decoration: none;
+}
+
+div.search-result:hover {
+    background: rgba(171, 183, 183, 0.85);
 }

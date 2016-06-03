@@ -1,5 +1,6 @@
 function fetchSearchResults(){
     var searchQuery = $("#search").val();
+    var resultsToShow = $("#number-results").val();
     console.log(searchQuery);
     $.ajax({
         headers: {
@@ -17,20 +18,23 @@ function fetchSearchResults(){
             generator: 'search',
             gsrnamespace: 0,
             gsrsearch: searchQuery,
-            gsrlimit: 10,
-            prop: 'pageimages|extracts|title',
+            gsrlimit: resultsToShow,
+            prop: 'pageimages|extracts|images',
             piprop: 'thumbnail',
             pilimit: 'max',
-            pithumbsize: 300,
-            iiprop: 'url',
+            pithumbsize: 600,
             exintro: 1,
             explaintext: 1,
-            exsentences: 2,
+            exsentences: 3,
             exlimit: 'max'
         },
         success: function (response) {
-            // console.log(response.query.pages);
-            displayResults(response);
+            if(!response.hasOwnProperty('query')) {
+                $("#results").html(''); // clears results after new search
+                $("#search-error").html("No results found, please check your spelling and try again")
+            } else {
+                displayResults(response);
+            }
         }
     });
     return false;
@@ -38,26 +42,48 @@ function fetchSearchResults(){
 
 function addImageHtml(imageHtml, resultNumber) {
     var currentDiv = '#result-' + resultNumber;
-    console.log(imageHtml + resultNumber);
     $(currentDiv).append(imageHtml);
 }
 
 function displayResults(data) {
-    var imageAPI = "https://en.wikipedia.org/w/api.php?action=query&prop=imageinfo&iilimit=50&iiend=2007-12-31T23:59:59Z&iiprop=timestamp|user|url&titles=File:";
+    $("#results").html(''); // clears results after new search
+    $("#search-error").html('<p></p>'); //clears error message after successful search
+    // var imageAPI = "https://en.wikipedia.org/w/api.php?action=query&prop=imageinfo&iilimit=50&iiend=2007-12-31T23:59:59Z&iiprop=timestamp|user|url&titles=File:";
 
     var html = '';
     var pageUrl = "http://en.wikipedia.org/?curid=";
     
-    $("#main").addClass("after-search").removeClass("start");
+    $("#main").addClass("after-search", 1000).removeClass("start", 1000);
 
+    // console.log(data.query.pages);
+    var sortable = [];
+    for (var item in data.query.pages) {
+        sortable.push([item, data.query.pages[item].index]);
+    }
+    sortable.sort(function (a, b) {
+        return a[1] - b[1];
+    });
+
+    var sortedObject = [];
+    for (var i = 0; i < sortable.length; i++) {
+        sortedObject.push(data.query.pages[sortable[i][0]])
+    }
+    console.log(sortedObject);
+    console.log(data);
     var result = 1;
-    for(var key in data.query.pages) {
-        console.log(data.query.pages[key]);
-        html = '<a href="' + pageUrl + data.query.pages[key].pageid + '" target="_blank"><div class="search-result container-fluid"><div class="col-md-10"><h4>' + data.query.pages[key].title + '</h4><p>' + data.query.pages[key].extract + '</p></div>' +
+    for(var j = 0; j < sortedObject.length; j++) {
+        // console.log(data.query.pages[key]);
+        var extract;
+        if (sortedObject[j].extract === undefined) {
+            extract = "No summary available, please click to view article.";
+        } else {
+            extract = sortedObject[j].extract;
+        }
+        html = '<a href="' + pageUrl + sortedObject[j].pageid + '" target="_blank"><div class="search-result container-fluid"><div class="col-md-10"><h3>' + sortedObject[j].title + '</h3><p>' + extract + '</p></div>' +
             '<div class="col-md-2" id="result-' + result + '"></div></div></a>';
         $("#results").append(html);
-        if (data.query.pages[key].hasOwnProperty('thumbnail')) {
-            var image = data.query.pages[key]['thumbnail']['source'];
+        if (sortedObject[j].hasOwnProperty('thumbnail')) {
+            var image = sortedObject[j]['thumbnail']['source'];
             var imageHtml = '<img class="img-responsive" src="' + image + '">';
             addImageHtml(imageHtml, result);
             // var imageHtml = '';
