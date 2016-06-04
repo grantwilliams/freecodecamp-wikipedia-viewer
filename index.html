@@ -15,17 +15,14 @@
 <body>
     <div id="main" class="start container">
         <div class="title-search text-center">
-            <h1>Wikipedia Viewer ZIPline</h1>
+            <h1>freeCodeCamp Wikipedia Viewer Zipline</h1>
             <form class="form-inline" id="search-form" name="search-form" method="post" action="#" onsubmit="return fetchSearchResults()">
                 <div class="form-group">
                     <div class="input-group">
                         <input type="text" class="form-control" id="search" placeholder="Search" value="" required>
-                        <!--<span class="input-group-addon">-->
-                            <a class="input-group-addon btn btn-default" onclick="return fetchSearchResults()"><i class="fa fa-search"></i></a>
-                        <!--</span>-->
+                        <a class="input-group-addon btn btn-default" onclick="return fetchSearchResults()"><i class="fa fa-search"></i></a>
                     </div>
                 </div>
-                <!--<span id="number-results-text" class="label label-info">Number of results to display:</span>-->
                 <select class="form-control" id="number-results" onchange="return fetchSearchResults()">
                     <option value="5">Show 5 results</option>
                     <option selected value="10">Show 10 results</option>

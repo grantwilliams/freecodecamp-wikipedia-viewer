@@ -35,12 +35,6 @@ h1 {
     background-color: red;
 }
 
-/*#results {*/
-    /*overflow-y: auto;*/
-    /*max-height: 700px;*/
-    /*margin-bottom: 50px;*/
-/*}*/
-
 .search-result {
     border: 1px solid black;
     background: rgba(255, 255, 255, 0.85);
