@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>freeCodeCamp - Wikipedia Viewer</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet prefetch">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/my-styles.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="js/my-scripts.js"></script>
+</head>
+<body>
+    <div id="main" class="start container">
+        <div class="title-search text-center">
+            <h1>freeCodeCamp Wikipedia Viewer Zipline</h1>
+            <form class="form-inline" id="search-form" name="search-form" method="post" action="#" onsubmit="return fetchSearchResults()">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search" value="" required>
+                        <a class="input-group-addon btn btn-default" onclick="return fetchSearchResults()"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+                <select class="form-control" id="number-results" onchange="return fetchSearchResults()">
+                    <option value="5">Show 5 results</option>
+                    <option selected value="10">Show 10 results</option>
+                    <option value="20">Show 20 results</option>
+                </select>
+                <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span class="btn btn-info">Click for random article</span></a>
+                <div id="search-error">
+
+                </div>
+            </form>
+        </div>
+        <div id="results">
+
+        </div>
+    </div>
+
+</body>
+</html>
