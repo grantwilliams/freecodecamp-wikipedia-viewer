@@ -49,7 +49,7 @@ function displayResults(data) {
     var html = '';
     var pageUrl = "http://en.wikipedia.org/?curid=";
     
-    $("#main").addClass("after-search", 1000).removeClass("start", 1000);
+    $("#title-search-wrapper").removeClass("start", 1000);
 
     var sortable = [];
     for (var item in data.query.pages) {
