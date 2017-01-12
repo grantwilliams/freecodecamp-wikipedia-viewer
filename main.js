@@ -1,39 +1,41 @@
 function fetchSearchResults(){
     var searchQuery = $("#search").val();
     var resultsToShow = $("#number-results").val();
-    $.ajax({
-        headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Accept": "application/json"
-        },
-        type: "get",
-        dataType: "jsonp",
-        url: "https://en.wikipedia.org/w/api.php",
-        data: {
-            format: 'json',
-            action: 'query',
-            generator: 'search',
-            gsrnamespace: 0,
-            gsrsearch: searchQuery,
-            gsrlimit: resultsToShow,
-            prop: 'pageimages|extracts|images',
-            piprop: 'thumbnail',
-            pilimit: 'max',
-            pithumbsize: 600,
-            exintro: 1,
-            explaintext: 1,
-            exsentences: 3,
-            exlimit: 'max'
-        },
-        success: function (response) {
-            if(!response.hasOwnProperty('query')) {
-                $("#results").html(''); // clears results after new search
-                $("#search-error").html("No results found, please check your spelling and try again")
-            } else {
-                displayResults(response);
+    if(searchQuery.length > 0) {
+        $.ajax({
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Accept": "application/json"
+            },
+            type: "get",
+            dataType: "jsonp",
+            url: "https://en.wikipedia.org/w/api.php",
+            data: {
+                format: 'json',
+                action: 'query',
+                generator: 'search',
+                gsrnamespace: 0,
+                gsrsearch: searchQuery,
+                gsrlimit: resultsToShow,
+                prop: 'pageimages|extracts|images',
+                piprop: 'thumbnail',
+                pilimit: 'max',
+                pithumbsize: 600,
+                exintro: 1,
+                explaintext: 1,
+                exsentences: 3,
+                exlimit: 'max'
+            },
+            success: function (response) {
+                if(!response.hasOwnProperty('query')) {
+                    $("#results").html(''); // clears results after new search
+                    $("#search-error").html('<span class="error">&nbsp;&nbsp;No results found, please check your spelling and try again&nbsp;&nbsp;</span>')
+                } else {
+                    displayResults(response);
+                }
             }
-        }
-    });
+        });
+    }
     return false;
 }
 

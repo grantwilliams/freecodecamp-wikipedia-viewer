@@ -39,7 +39,11 @@ h2 {
     font-size: 2em;
 }
 
-#search-error {
+.source-text {
+    margin-top: 20px;
+}
+
+.error {
     background-color: red;
 }
 
